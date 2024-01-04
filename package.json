@@ -1,0 +1,16 @@
+{
+  "name": "leitor_de_planilhas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "google-auth-library": "^9.4.1",
+    "google-spreadsheet": "^4.1.1"
+  }
+}
