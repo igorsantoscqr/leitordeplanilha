@@ -13,8 +13,7 @@ const jwt = new JWT({
     scopes: SCOPES,
 });
 
-
-async function GetDoc(id, jwt) {
+async function GetDoc() {
     const doc = new GooogleSpreadsheet(arquivo.id, jwt)
     await doc.loadinfo()
     return doc
@@ -27,4 +26,24 @@ async function ReadWorkSheet() {
         return row.toObject()
     })
     return users
+}
+
+async function AddUser(data = {}) {
+    const response = await fetch("https://apigenerator.dronahq.com/api/epcrSy-G/users", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+    return response.json()
+}
+
+async function TrackData() {
+    let data = await ReadWorkSheet()
+    data.map(async(user) => {
+        let response = await AddUser(user)
+        console.log(response)
+    })
+    return console.log('Dados copiados com sucesso')
 }
